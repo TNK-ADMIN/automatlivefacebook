@@ -66,13 +66,15 @@ class MainWindow(QMainWindow):
         timetotal = self.main.time_count.value()
         uidlive = self.main.uidlive.text()
         index = self.main.view_accounts.rowCount()
-        
+
         start_time = time.time()
 
         while True:
             elapsed_time = time.time() - start_time
             if elapsed_time >= timetotal * 60:
                 print("Dừng")
+                for x in range(0, int(index)):
+                    self.addItem(x, 1, "Đã Dừng")
                 self.showMessageBox("Thông Báo", f"Đã Hết {timetotal} Phút")
                 break
 
@@ -84,6 +86,7 @@ class MainWindow(QMainWindow):
                 self.list_Thread[x].start()
                 self.Delay(1)
             self.Delay(20)
+
     def handleResult(self, result):
         if result:
             self.success += 1
