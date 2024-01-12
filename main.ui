@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>606</width>
+    <width>610</width>
     <height>422</height>
    </rect>
   </property>
@@ -130,10 +130,10 @@
             <widget class="QLabel" name="label_4_success">
              <property name="geometry">
               <rect>
-               <x>78</x>
+               <x>68</x>
                <y>43</y>
-               <width>16</width>
-               <height>16</height>
+               <width>81</width>
+               <height>20</height>
               </rect>
              </property>
              <property name="text">
@@ -143,10 +143,10 @@
             <widget class="QLabel" name="label_5_fail">
              <property name="geometry">
               <rect>
-               <x>78</x>
+               <x>68</x>
                <y>76</y>
-               <width>16</width>
-               <height>16</height>
+               <width>81</width>
+               <height>20</height>
               </rect>
              </property>
              <property name="text">
@@ -195,10 +195,10 @@
             <widget class="QLabel" name="label_6_total">
              <property name="geometry">
               <rect>
-               <x>78</x>
+               <x>68</x>
                <y>9</y>
-               <width>16</width>
-               <height>16</height>
+               <width>81</width>
+               <height>20</height>
               </rect>
              </property>
              <property name="text">
