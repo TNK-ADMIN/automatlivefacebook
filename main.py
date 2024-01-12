@@ -64,11 +64,13 @@ class MainWindow(QMainWindow):
 
     def let_start(self):
         timetotal = self.main.time_count.value()
+        thread_count = self.main.thread_count.value()
+        delaycount = self.main.delay_count.value()
         uidlive = self.main.uidlive.text()
         index = self.main.view_accounts.rowCount()
 
         start_time = time.time()
-
+        i = 0
         while True:
             elapsed_time = time.time() - start_time
             if elapsed_time >= timetotal * 60:
@@ -79,12 +81,15 @@ class MainWindow(QMainWindow):
                 break
 
             for x in range(0, int(index)):
+                i+=1
+                if i == thread_count:
+                    i = 0
+                    self.Delay(int(delaycount))
                 cookie = self.main.view_accounts.item(x, 0).text()
                 self.list_Thread[x] = ThreadMAIN(uidlive, cookie, x)
                 self.list_Thread[x].show.connect(self.addItem)
                 self.list_Thread[x].result.connect(self.handleResult)
                 self.list_Thread[x].start()
-                self.Delay(1)
             self.Delay(20)
 
     def handleResult(self, result):
