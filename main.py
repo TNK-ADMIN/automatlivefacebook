@@ -59,7 +59,8 @@ class MainWindow(QMainWindow):
             index += 1
 
         total_rows = len(data)
-        self.main.label_6_total.setText(str(total_rows))
+        #self.main.label_6_total.setText(str(total_rows))
+        self.updateLabel(self.main.label_6_total, str(total_rows))
 
 
     def let_start(self):
@@ -92,14 +93,22 @@ class MainWindow(QMainWindow):
                 self.list_Thread[x].start()
             self.Delay(20)
 
+    def updateLabel(self, label, value):
+        label.setText(str(value))
+        label.setToolTip(label.text())  # Set tooltip with full text
+        label.setStyleSheet("QLabel { qproperty-alignment: AlignTop; }")
+        label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        label.setWordWrap(True)
+
+
     def handleResult(self, result):
         if result:
             self.success += 1
-            self.main.label_4_success.setText(str(self.success))
+            self.updateLabel(self.main.label_4_success, self.success)
             self.main.label_4_success.setStyleSheet("color: green;")
         else:
             self.fail_count += 1
-            self.main.label_5_fail.setText(str(self.fail_count))
+            self.updateLabel(self.main.label_5_fail, self.fail_count)
             self.main.label_5_fail.setStyleSheet("color: red;")
 
 class ThreadMAIN(QThread):
